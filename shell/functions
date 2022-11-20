@@ -1,0 +1,42 @@
+#!/bin/sh
+
+#get directory to cd to
+fzfcdhome () {
+FZF_DEFAULT_COMMAND="fd -H . $HOME"
+dir="$(fzf)"
+filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
+
+# cd to dir
+if [ "$filetype" = "directory" ]; then
+    cd "$dir"
+else
+    cd "$(dirname "$dir")"
+fi
+}
+fzfcdroot () {
+FZF_DEFAULT_COMMAND="fd -H . /"
+dir="$(fzf)"
+filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
+
+# cd to dir
+if [ "$filetype" = "directory" ]; then
+    cd "$dir"
+else
+    cd "$(dirname "$dir")"
+fi
+}
+
+#create scripts and edit 'em
+scripter () {
+script="$PWD/$1"
+exists="$(/bin/ls -A | /bin/grep "$1")"
+/bin/touch "$script"
+/bin/chmod +x "$script"
+if [ "$exists" = "$1" ]
+then
+    $EDITOR $script
+else
+    /bin/echo "#!/bin/sh" >> "$script"
+fi
+
+}

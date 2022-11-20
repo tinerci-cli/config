@@ -1,0 +1,60 @@
+#!/bin/sh
+
+#common commands
+alias \
+	c="clear" \
+	rmr="rm -Ivr" \
+	ll="exa -labgiShH --time-style long-iso" \
+	la="exa -a" \
+  ls="exa" \
+	mkd="mkdir -pv" \
+	cp="cp -ivr" \
+	ls="exa" \
+	rm="rm -Iv" \
+	mv="mv -iv" \
+  ifconfig='ifconfig && echo "        public IP: $(curl -s ifconfig.me/ip)"' \
+  llsv="exa -a ~ | wc -l" \
+  nf="neofetch" \
+	v="nvim" \
+	m="mpv" \
+	b="bat" \
+  s="sudo" \
+  se="sudoedit" \
+
+#git
+alias \
+	g="git" \
+	ga="git add" \
+	gb="git branch" \
+	gcm="git commit" \
+	gcl="git clone" \
+	gco="git checkout" \
+	gd="git diff" \
+	gf="git fetch" \
+	gg="git gui citool" \
+	gps="git push" \
+	gpl="git pull" \
+	gm="git merge" \
+	gr="git remote" \
+	grb="git rebase" \
+	grs="git reset" \
+	grv="git revert"
+
+#systemd
+alias \
+  sctl="systemctl" \
+  ssctl="sudo systemctl" \
+
+#stupid
+alias \
+  :wq="exit" \
+  :q="exit" \
+
+#apt
+alias \
+  a="sudo apt" \
+  aUU="sudo apt update && sudo apt upgrade" \
+  aI="sudo apt install" \
+  aS="apt search" \
+  aR="sudo apt remove" \
+  aP="sudo apt purge"

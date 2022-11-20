@@ -1,0 +1,50 @@
+#         _              
+# _______| |__  _ __ ___ 
+#|_  / __| '_ \| '__/ __|
+# / /\__ \ | | | | | (__ 
+#/___|___/_| |_|_|  \___|
+
+#start tmux
+# if [ "$TMUX" = "" ]; then tmux; fi
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.config/zsh/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd notify
+unsetopt beep
+zstyle :compinstall filename '"$HOME".config/zsh/.zshrc'
+
+#basic tab completion
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+
+#source functions && functions
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+
+#"[USER@HOST:PWD]$ "  with cool colors
+PROMPT="%B%F{red}[%f%F{yellow}%n%f%F{white}@%f%F{cyan}%m%f%F{white}:%f%F{blue}%~%f%F{red}]%f%F{green}$%f %b"
+
+# cd using fzf
+bindkey -s '^f' 'fzfcdhome\n'
+bindkey -s '^r' 'fzfcdroot\n'
+
+# Edit line in $EDITOR with ctrl-e:
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+#load plugins
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/zsh/plugins/bd.zsh #change to a parentdirectory without specifying path
+source /usr/share/zsh/plugins/clipboard.zsh #needed for copyfile & copypath
+source /usr/share/zsh/plugins/copyfile.plugin.zsh #copies content of a file to clipboard (xorg)
+source /usr/share/zsh/plugins/copypath.plugin.zsh #copies $PWD (or $PWD/file if specified) to clipboard
+source /usr/share/zsh/plugins/vi-mode.plugin.zsh #vi mode in shell
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh #auto sugestions
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh #syntax highlighting; must be loaded last

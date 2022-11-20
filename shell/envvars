@@ -1,0 +1,47 @@
+#!/bin/sh
+#     _          _ _ 
+# ___| |__   ___| | |
+#/ __| '_ \ / _ \ | |
+#\__ \ | | |  __/ | |
+#|___/_| |_|\___|_|_|
+#
+#__   ____ _ _ __(_) __ _| |__ | | ___  ___ 
+#\ \ / / _` | '__| |/ _` | '_ \| |/ _ \/ __|
+# \ V / (_| | |  | | (_| | |_) | |  __/\__ \
+#  \_/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
+                                           
+#export path
+export PATH=$HOME/.local/bin:$HOME/.local/appimage:/usr/lib/cargo/bin:/usr/local/bin:/sbin:/usr/lib/jvm/jdk-19/bin:$PATH
+
+#XDG paths
+export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
+export XDG_STATE_HOME=${XDG_STATE_HOME:="$HOME/.local/state"}
+
+#clean ~
+export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
+export ZDOTDIR=$HOME/.config/zsh
+export ASOUNDRC="$XDG_CONFIG_HOME"/alsa/asoundrc
+export KDEHOME="$XDG_CONFIG_HOME"/kde
+#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority #uncomment when no Display Manager
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export GITCONFIG="$XDG_CONFIG_HOME"/git/config
+export PULSECOOKIE="$XDG_CONFIG_HOME"/pulse/cookie
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export LESSHISTFILE=-
+export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+
+#programs
+export FZF_DEFAULT_COMMAND="fd -H . $HOME"
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+#default apps
+export EDITOR="nvim"
+export VISUAL="$EDITOR"
+export PAGER="bat"
+export READER="evince"
+export BROWSER="firefox"
