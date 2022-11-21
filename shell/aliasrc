@@ -49,6 +49,7 @@ alias \
 alias \
   :wq="exit" \
   :q="exit" \
+  termconf="xfce4-terminal --preferences" \
 
 #apt
 alias \
