@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
-let g:netrw_dirhist_4='/home/tinerci/.config/shell/functions'
-let g:netrw_dirhist_3='/home/tinerci/code/scripts'
-let g:netrw_dirhist_2='/home/tinerci/.config/systemd/user/default.target.wants'
-let g:netrw_dirhist_1='/home/tinerci/.config/nvim'

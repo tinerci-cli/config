@@ -3,7 +3,7 @@
 #get directory to cd to
 fzfcdhome () {
 FZF_DEFAULT_COMMAND="fd -H . $HOME"
-dir="$(fzf)"
+dir="$(fzf-tmux)"
 filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
 
 # cd to dir
@@ -15,7 +15,7 @@ fi
 }
 fzfcdroot () {
 FZF_DEFAULT_COMMAND="fd -H . /"
-dir="$(fzf)"
+dir="$(fzf-tmux)"
 filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
 
 # cd to dir
