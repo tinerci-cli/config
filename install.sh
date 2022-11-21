@@ -1,5 +1,6 @@
 #!/bin/sh
 mkdir "$HOME"/code
+ln -s "$HOME"/code/config/bat "$XDG_CONFIG_HOME"
 ln -s "$HOME"/code/config/htop "$XDG_CONFIG_HOME"
 ln -s "$HOME"/code/config/mpv "$XDG_CONFIG_HOME"
 ln -s "$HOME"/code/config/neofetch "$XDG_CONFIG_HOME"
