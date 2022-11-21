@@ -2,27 +2,28 @@
 
 #get directory to cd to
 fzfcdhome () {
-FZF_DEFAULT_COMMAND="fd -H . $HOME"
+export FZF_DEFAULT_COMMAND="fd -H . $HOME"
 dir="$(fzf-tmux)"
 filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
 
 # cd to dir
 if [ "$filetype" = "directory" ]; then
-    cd "$dir"
+  cd "$dir" || return
 else
-    cd "$(dirname "$dir")"
+  cd "$(dirname "$dir")" || return
 fi
 }
+
 fzfcdroot () {
-FZF_DEFAULT_COMMAND="fd -H . /"
+export FZF_DEFAULT_COMMAND="fd -H . /"
 dir="$(fzf-tmux)"
 filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
 
 # cd to dir
 if [ "$filetype" = "directory" ]; then
-    cd "$dir"
+  cd "$dir" || return
 else
-    cd "$(dirname "$dir")"
+  cd "$(dirname "$dir")" || return
 fi
 }
 
@@ -30,13 +31,14 @@ fi
 scripter () {
 script="$PWD/$1"
 exists="$(/bin/ls -A | /bin/grep "$1")"
-/bin/touch "$script"
-/bin/chmod +x "$script"
+
 if [ "$exists" = "$1" ]
 then
-    $EDITOR $script
+  "$EDITOR" "$script"
 else
-    /bin/echo "#!/bin/sh" >> "$script"
+  /bin/echo "#!/bin/sh" >> "$script"
+  /bin/touch "$script"
+  /bin/chmod +x "$script"
+  "$EDITOR" "$script"
 fi
-
 }
