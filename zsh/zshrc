@@ -26,12 +26,13 @@ _comp_options+=(globdots)
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
-#"[USER@HOST:PWD]$ "  with cool colors
+#"[USER@HOST:PWD]$      $(git_super_status)"  with cool colors
 PROMPT="%B%F{red}[%f%F{yellow}%n%f%F{white}@%f%F{cyan}%m%f%F{white}:%f%F{blue}%~%f%F{red}]%f%F{green}$%f %b"
 
 # cd using fzf
 bindkey -s '^f' 'fzfcdhome\n'
 bindkey -s '^r' 'fzfcdroot\n'
+bindkey -s '^p' 'fzfcppath\n'
 
 # Edit line in $EDITOR with ctrl-e:
 autoload edit-command-line

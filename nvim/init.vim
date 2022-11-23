@@ -26,7 +26,7 @@ set shiftwidth=2
 set expandtab
 set smartindent
 "quality of life
-"set nowrap
+set ignorecase
 set colorcolumn=100
 set signcolumn=auto
 set scrolloff=20

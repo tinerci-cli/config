@@ -2,43 +2,48 @@
 
 #get directory to cd to
 fzfcdhome () {
-export FZF_DEFAULT_COMMAND="fd -H . $HOME"
-dir="$(fzf-tmux)"
-filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
+  export FZF_DEFAULT_COMMAND="fd -H . $HOME"
+  dir="$(fzf-tmux)"
+  filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
 
-# cd to dir
-if [ "$filetype" = "directory" ]; then
-  cd "$dir" || return
-else
-  cd "$(dirname "$dir")" || return
-fi
+  # cd to dir
+  if [ "$filetype" = "directory" ]; then
+    cd "$dir" || return
+  else
+    cd "$(dirname "$dir")" || return
+  fi
 }
 
 fzfcdroot () {
-export FZF_DEFAULT_COMMAND="fd -H . /"
-dir="$(fzf-tmux)"
-filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
-
-# cd to dir
-if [ "$filetype" = "directory" ]; then
-  cd "$dir" || return
-else
-  cd "$(dirname "$dir")" || return
-fi
+  export FZF_DEFAULT_COMMAND="fd -H . /"
+  dir="$(fzf-tmux)"
+  filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
+  
+  # cd to dir
+  if [ "$filetype" = "directory" ]; then
+    cd "$dir" || return
+  else
+    cd "$(dirname "$dir")" || return
+  fi
 }
 
 #create scripts and edit 'em
 scripter () {
-script="$PWD/$1"
-exists="$(/bin/ls -A | /bin/grep "$1")"
+  script="$PWD/$1"
+  exists="$(/bin/ls -A | /bin/grep "$1")"
+  
+  if [ "$exists" = "$1" ]
+  then
+    "$EDITOR" "$script"
+  else
+    /bin/echo "#!/bin/sh" >> "$script"
+    /bin/touch "$script"
+    /bin/chmod +x "$script"
+    "$EDITOR" "$script"
+  fi
+}
 
-if [ "$exists" = "$1" ]
-then
-  "$EDITOR" "$script"
-else
-  /bin/echo "#!/bin/sh" >> "$script"
-  /bin/touch "$script"
-  /bin/chmod +x "$script"
-  "$EDITOR" "$script"
-fi
+fzfcppath () {
+  export FZF_DEFAULT_COMMAND="fd -H . /"
+  fzf-tmux | xclip -selection clipboard
 }
