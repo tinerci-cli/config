@@ -8,6 +8,8 @@ Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } } "dependen
 Plug 'https://github.com/junegunn/fzf.vim' "use fzf with vim
 Plug 'https://github.com/junegunn/vim-slash' "cool search
 Plug 'https://github.com/tpope/vim-commentary' "commenting faster
+Plug 'https://github.com/vim-airline/vim-airline' "nice status bar
+Plug 'https://github.com/preservim/nerdtree' "directory file strcture
 call plug#end()
 
 "cool numbers
@@ -47,10 +49,11 @@ nnoremap k gk
 nnoremap <C-j> gt
 nnoremap <C-k> gT
 let mapleader = ","
-nnoremap  <leader>y  "+yy
-nnoremap  <leader>p  "+p
-nnoremap  <leader>P  o<ESC>"+P
+nnoremap <leader>y  "+yy
+nnoremap <leader>p  "+p
+nnoremap <leader>P  o<ESC>"+P
 nnoremap <leader>f :Files .<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 "theming
 colorscheme gruvbox
@@ -63,9 +66,14 @@ lua require'colorizer'.setup()
 "fzf open tabs not buffers
 let g:fzf_action = { 'enter': 'tab split' }
 "blink for vim-slash
+let g:airline#extensions#tabline#enabled = 1
 if has('timers')
   noremap <expr> <plug>(slash-after) slash#blink(6, 400)
 endif
+
+"filetypes without syntax highlighting
+filetype on
+au BufNewFile,Bufread *.jsh set filetype=java
 
 "stupid
 command! Wq :wq
@@ -74,3 +82,5 @@ command! W :w
 command! Q :q
 :cmap Q! q!
 :cmap q1 q!
+:cmap Q1 q!
+:cmap X x

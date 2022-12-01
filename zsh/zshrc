@@ -40,8 +40,8 @@ zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 #load plugins
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh #fzf history
+source /usr/share/doc/fzf/examples/completion.zsh #fzf completion using **
 source /usr/share/zsh/plugins/bd.zsh #change to a parentdirectory without specifying path
 source /usr/share/zsh/plugins/clipboard.zsh #needed for copyfile & copypath
 source /usr/share/zsh/plugins/copyfile.plugin.zsh #copies content of a file to clipboard (xorg)
