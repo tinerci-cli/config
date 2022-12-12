@@ -22,6 +22,9 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 
+#no unwanted/accidental overwrite of files
+set -o noclobber
+
 #source functions && functions
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
