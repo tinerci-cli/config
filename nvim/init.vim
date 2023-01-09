@@ -20,7 +20,7 @@ set hlsearch "highlight search results
 set wildmode=longest,list
 set incsearch "search as you type
 set exrc "vim config per folder
-set mouse=vi "mouse support in visual & insert
+set mouse=a "mouse support in all modes
 set smartcase
 "tabs
 set tabstop=2 softtabstop=2
@@ -49,7 +49,7 @@ nnoremap k gk
 nnoremap <C-j> gt
 nnoremap <C-k> gT
 let mapleader = ","
-nnoremap <leader>y  "+yy
+nnoremap <leader>y  "+y
 nnoremap <leader>p  "+p
 nnoremap <leader>P  o<ESC>"+P
 nnoremap <leader>f :Files .<CR>
@@ -74,6 +74,9 @@ endif
 "filetypes without syntax highlighting
 filetype on
 au BufNewFile,Bufread *.jsh set filetype=java
+
+"autoread every 4s
+set autoread | au CursorHold * checktime | call feedkeys("lh")
 
 "stupid
 command! Wq :wq
