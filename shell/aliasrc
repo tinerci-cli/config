@@ -20,6 +20,8 @@ alias \
 	b="bat" \
   s="sudo" \
   se="sudoedit" \
+  wgUP="sudo wg-quick up home" \
+  wgDOWN="sudo wg-quick down home" \
 
 #git
 alias \
@@ -51,12 +53,13 @@ alias \
   :q="exit" \
   :x="exit" \
   termconf="xfce4-terminal --preferences" \
+  wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 #apt
 alias \
   a="sudo apt" \
-  aUU="sudo apt update && sudo apt upgrade" \
-  aI="sudo apt install" \
-  aS="apt search" \
-  aR="sudo apt remove" \
-  aP="sudo apt purge"
+  aUU="sudo apt-get update && sudo apt-get upgrade" \
+  aI="sudo apt-get install" \
+  aS="apt-cache search" \
+  aR="sudo apt-get remove" \
+  aP="sudo apt-get purge"

@@ -43,7 +43,13 @@ scripter () {
   fi
 }
 
+#copypath with fzf
 fzfcppath () {
   export FZF_DEFAULT_COMMAND="fd -H . /"
   fzf-tmux | xclip -selection clipboard
+}
+
+#move files with ending $2 from $1 to $3
+mvsubs() {
+  find $1 -name "*.$2" -exec mv -it $3 {} +
 }
