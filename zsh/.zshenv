@@ -1,1 +1,0 @@
-/home/tinerci/.config/shell/envvars
