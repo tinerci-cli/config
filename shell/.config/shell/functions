@@ -53,3 +53,29 @@ fzfcppath () {
 mvsubs() {
   find $1 -name "*.$2" -exec mv -it $3 {} +
 }
+
+#convert base 10 to binary
+tobinary(){
+    n=$(($1))
+    bits=""
+    sign=""
+    if [ "$n" -lt 0 ]; then
+        sign=- n=$((-n))
+    fi
+    while [ "$n" -gt 0 ]; do
+        bits="$(( n&1 ))$bits";
+        : $(( n >>= 1 ))
+    done
+    printf "%s\n" "$sign${bits:-0}"
+}
+
+#get unix time
+unixtime() {
+  while true; do date +%s | figlet; sleep 1; clear; done
+}
+
+#get unix time in binary
+unixtimebinary() {
+  while true; do tobinary $(date +%s) | figlet; sleep 1; clear; done
+}
+
