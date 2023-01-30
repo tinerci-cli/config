@@ -11,7 +11,7 @@
 #  \_/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
                                            
 #export path
-export PATH=$HOME/.local/bin:$HOME/.local/appimage:$HOME/.local/pip:/usr/lib/cargo/bin:/usr/local/bin:/sbin:/usr/lib/jvm/jdk-19/bin:$PATH
+export PATH=$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/bin:$HOME/.local/appimage:$HOME/.local/pip:/usr/lib/cargo/bin:/usr/local/bin:/sbin:/usr/lib/jvm/jdk-19/bin:$PATH
 
 #XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
@@ -38,6 +38,7 @@ export ANDROID_HOME="$XDG_DATA_HOME"/android
 #programs
 export FZF_DEFAULT_COMMAND="fd -H . $HOME"
 export QT_QPA_PLATFORMTHEME=qt5ct
+export XDG_DATA_DIRS=$HOME/.nix-profile/share:$HOME/.share:"${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
 
 #default apps
 export EDITOR="nvim"
