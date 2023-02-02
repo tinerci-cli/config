@@ -1,3 +1,3 @@
 require("settings")
 require("keymaps")
-require('plugin/colorizer')
+require("plugin/color")
