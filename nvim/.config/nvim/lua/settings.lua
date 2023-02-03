@@ -31,5 +31,5 @@ vim.opt.undofile = true
 --misc
 vim.opt.signcolumn = 'auto'
 vim.opt.colorcolumn = { 100 }
-vim.opt.mouse = { a = true }
+vim.opt.mouse = { vi = true }
 vim.opt.autoread = true
