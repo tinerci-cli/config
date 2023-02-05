@@ -1,5 +1,3 @@
 # dotfiles
 to install run
-```bash
-xstow -target ~ ./$(ls -d */)
-```
+```xstow -target ~ ./$(ls -d */)```
