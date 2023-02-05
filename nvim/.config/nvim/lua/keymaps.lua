@@ -34,12 +34,3 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- disable highlighting till next searches
 vim.keymap.set("n", "L", ":nohlsearch<CR>")
-
--- toggle undotree
-vim.keymap.set("n", "<leader>h", ":UndotreeToggle <CR>")
-
--- telescope shortcuts
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
