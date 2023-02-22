@@ -34,6 +34,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export LESSHISTFILE=-
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export ANDROID_HOME="$XDG_DATA_HOME"/android
+export ANDROID_VENDOR_KEYS="$XDG_DATA_HOME"/android/adbkeys
 
 #programs
 export FZF_DEFAULT_COMMAND="fd -H . $HOME"
