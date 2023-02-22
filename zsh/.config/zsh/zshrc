@@ -30,7 +30,7 @@ set -o noclobber
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
 #"[USER@HOST:PWD]$      $(git_super_status)"  with cool colors
-PROMPT="%B%F{red}[%f%F{yellow}%n%f%F{white}@%f%F{cyan}%m%f%F{white}:%f%F{blue}%~%f%F{red}]%f%F{green}$%f %b"
+PROMPT="%B%F{red}[%f%F{yellow}%n%f%F{white}@%f%F{cyan}%m%f%F{white}:%f%F{blue}%3~%f%F{red}]%f%F{green}$%f %b"
 
 # cd using fzf
 bindkey -s '^f' 'fzfcdhome\n'
