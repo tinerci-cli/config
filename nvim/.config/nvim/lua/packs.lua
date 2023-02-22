@@ -32,6 +32,12 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- nvim window in browser for editing
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end 
+  }
+
   -- auto closes brackets and html
   use {
     "windwp/nvim-autopairs",
