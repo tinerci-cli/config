@@ -7,8 +7,9 @@ return require('packer').startup(function(use)
   -- packer itself
   use 'wbthomason/packer.nvim'
 
-  -- best colorscheme
+  -- colorschemes
   use 'gruvbox-community/gruvbox'
+  use 'dracula/vim'
 
   -- shows tree of last changes
   use 'mbbill/undotree'
@@ -16,14 +17,14 @@ return require('packer').startup(function(use)
   -- gc(c) to (un)comment
   use 'tpope/vim-commentary'
 
-  -- cool statusline
-  use 'vim-airline/vim-airline'
-
   -- lmao
   use 'eandrju/cellular-automaton.nvim'
 
   -- colorizes colorcodes
   use 'NvChad/nvim-colorizer.lua'
+
+  -- tab completion in search
+  use 'vim-scripts/SearchComplete'
 
   -- telescope fuzzy finder
   use {
@@ -36,6 +37,12 @@ return require('packer').startup(function(use)
   use {
     'glacambre/firenvim',
     run = function() vim.fn['firenvim#install'](0) end 
+  }
+
+  --statusline
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
   -- auto closes brackets and html
