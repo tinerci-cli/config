@@ -1,0 +1,21 @@
+$SHELL=ZSH
+
+SHORTCUTS
+<c-h> | search your command history
+<c-e> | edit current prompt in $EDITOR
+<c-f> | fuzzy cd from $HOME
+<c-t> | fuzzy cd from $PWD
+<c-p> | cp path to clipboard from fzf
+
+FUNCTIONS
+scripter() - create script in $PWD and edit them
+mvsubs() - mv files with ending "$2" from directory "$1" to directory "$3"
+tobinary() - convert base 10 to binary
+unixtime() - get current time in unixtime
+unixtime() - get current time in unixtime in binary
+
+
+PLUGINS
+bd - cd number of parent directories - bd 2 : cds 2 directories up
+copypath - copies path from $PWD - copypath foobar.txt : copies path to foobar.txt
+copyfile - copies content of file - copyfile foobar.txt : copies contents of foobar.txt

@@ -34,10 +34,10 @@ return require('packer').startup(function(use)
   }
 
   -- nvim window in browser for editing
-  use {
-    'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end 
-  }
+  -- use {
+  --   'glacambre/firenvim',
+  --   run = function() vim.fn['firenvim#install'](0) end 
+  -- }
 
   --statusline
   use {
@@ -81,7 +81,13 @@ return require('packer').startup(function(use)
       -- Snippets
       {'L3MON4D3/LuaSnip'},             -- Required
       {'rafamadriz/friendly-snippets'}, -- Optional
+
+      -- Language specifiv
+      -- {'mfussenegger/nvim-jdtls'}, -- Java
     }
   }
+
+  -- LSP language specific
+  use {'mfussenegger/nvim-jdtls'} -- Java
 
 end)

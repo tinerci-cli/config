@@ -35,6 +35,7 @@ export LESSHISTFILE=-
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export ANDROID_VENDOR_KEYS="$XDG_DATA_HOME"/android/adbkeys
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc 
 
 #programs
 export FZF_DEFAULT_COMMAND="fd -H . $HOME"
