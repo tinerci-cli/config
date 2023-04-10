@@ -5,6 +5,8 @@ SHORTCUTS
 <c-e> | edit current prompt in $EDITOR
 <c-f> | fuzzy cd from $HOME
 <c-t> | fuzzy cd from $PWD
+<c-r> | fuzzy cd from /
+<c-e> | fuzzy cd & edit from $HOME
 <c-p> | cp path to clipboard from fzf
 
 FUNCTIONS

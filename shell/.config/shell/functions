@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#get directory to cd to
+# get directory to cd to
 fzfcdhome () {
   export FZF_DEFAULT_COMMAND="fd -H . $HOME"
   dir="$(fzf-tmux)"
@@ -24,6 +24,21 @@ fzfcdroot () {
     cd "$dir" || return
   else
     cd "$(dirname "$dir")" || return
+  fi
+}
+
+# cd and edit file
+fzfedhome () {
+  export FZF_DEFAULT_COMMAND="fd -H . $HOME"
+  dir="$(fzf-tmux)"
+  filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
+  editfile="$(echo "$dir" | awk -F  '/' '{print $NF}')"
+
+  # cd to dir
+  if [ "$filetype" = "directory" ]; then
+    cd "$dir" || return
+  else
+    cd "$(dirname "$dir")" && "$EDITOR" "$editfile" || return
   fi
 }
 

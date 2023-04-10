@@ -55,6 +55,7 @@ alias \
   termconf="xfce4-terminal --preferences" \
   wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"' \
   help="cat $XDG_CONFIG_HOME/shell/help.txt && echo '\nALIASES\n' &&  cat $XDG_CONFIG_HOME/shell/aliasrc" \
+  gnome-settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
   
 
 #apt
