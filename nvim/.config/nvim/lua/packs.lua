@@ -89,5 +89,5 @@ return require('packer').startup(function(use)
 
   -- LSP language specific
   use {'mfussenegger/nvim-jdtls'} -- Java
-
+  
 end)
