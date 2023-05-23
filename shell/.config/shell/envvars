@@ -11,7 +11,7 @@
 #  \_/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
                                            
 #export path
-export PATH=$HOME/.local/bin:$HOME/.local/appimage:$HOME/.local/pip:/usr/lib/cargo/bin:/usr/local/bin:/sbin:/usr/lib/jvm/jdk-19/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.local/appimage:$HOME/.local/pip:/usr/lib/cargo/bin:/usr/local/bin:/sbin:/usr/lib/jvm/jdk-20.0.1/bin:$PATH
 
 #XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
