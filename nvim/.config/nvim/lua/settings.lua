@@ -8,7 +8,6 @@ vim.opt.incsearch = true
 vim.opt.inccommand = 'nosplit'
 vim.opt.ignorecase = true
 -- rice
-vim.cmd.colorscheme("gruvbox")
 vim.opt.background = 'dark'
 vim.cmd.highlight({ "Normal", "guibg=none", "ctermbg=none" })
 vim.opt.termguicolors = true

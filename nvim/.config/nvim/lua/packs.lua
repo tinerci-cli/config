@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- colorschemes
-  use 'gruvbox-community/gruvbox'
+  use 'ellisonleao/gruvbox.nvim'
   use 'dracula/vim'
 
   -- shows tree of last changes
@@ -36,7 +36,7 @@ return require('packer').startup(function(use)
   -- nvim window in browser for editing
   -- use {
   --   'glacambre/firenvim',
-  --   run = function() vim.fn['firenvim#install'](0) end 
+  --   run = function() vim.fn['firenvim#install'](0) end
   -- }
 
   --statusline
@@ -59,6 +59,9 @@ return require('packer').startup(function(use)
       ts_update()
     end,
   }
+
+  -- LSP language specific
+  use {'mfussenegger/nvim-jdtls'} -- Java
 
   -- lsp-zero
   use {
@@ -87,7 +90,4 @@ return require('packer').startup(function(use)
     }
   }
 
-  -- LSP language specific
-  use {'mfussenegger/nvim-jdtls'} -- Java
-  
 end)
