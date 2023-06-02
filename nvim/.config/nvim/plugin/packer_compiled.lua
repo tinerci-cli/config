@@ -210,6 +210,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mete/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
+  },
+  ["vim-synthwave84"] = {
+    loaded = true,
+    path = "/home/mete/.local/share/nvim/site/pack/packer/start/vim-synthwave84",
+    url = "https://github.com/artanikin/vim-synthwave84"
   }
 }
 

@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
   -- colorschemes
   use 'ellisonleao/gruvbox.nvim'
   use 'dracula/vim'
+  use 'artanikin/vim-synthwave84'
 
   -- shows tree of last changes
   use 'mbbill/undotree'
@@ -85,8 +86,6 @@ return require('packer').startup(function(use)
       {'L3MON4D3/LuaSnip'},             -- Required
       {'rafamadriz/friendly-snippets'}, -- Optional
 
-      -- Language specifiv
-      -- {'mfussenegger/nvim-jdtls'}, -- Java
     }
   }
 

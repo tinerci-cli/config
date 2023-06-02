@@ -14,6 +14,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 20
 vim.cmd.syntax("on")
 vim.cmd.filetype("on")
+-- vim.cmd("colorscheme foobar")
 -- tab
 vim.opt.smartcase = true
 vim.opt.tabstop = 2
