@@ -22,7 +22,8 @@ alias \
   se="sudoedit" \
   wgUP="sudo wg-quick up home" \
   wgDOWN="sudo wg-quick down home" \
-  cf="copyfile"
+  cf="copyfile" \
+  vrms="check-dfsg-status"
 
 #git
 alias \
@@ -59,7 +60,7 @@ alias \
   gnome-settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center" \
   sl="sl -alFe" \
   reload="source $XDG_CONFIG_HOME/zsh/.zshrc"
-  
+
 
 #apt
 alias \

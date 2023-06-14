@@ -1,7 +1,7 @@
-#         _              
-# _______| |__  _ __ ___ 
+#         _
+# _______| |__  _ __ ___
 #|_  / __| '_ \| '__/ __|
-# / /\__ \ | | | | | (__ 
+# / /\__ \ | | | | | (__
 #/___|___/_| |_|_|  \___|
 
 #start tmux
@@ -29,7 +29,7 @@ set -o noclobber
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
-#"[USER@HOST:PWD]$ 
+#"[USER@HOST:PWD]$
 PROMPT="%B%F{red}[%f%F{yellow}%n%f%F{white}@%f%F{cyan}%m%f%F{white}:%f%F{blue}%3~%f%F{red}]%f%F{green}$%f %b"
 #PROMPT="%F{red}[%f%F{magenta}%n%f%F{cyan}@%f%F{yellow}%m%f%F{cyan}:%f%F{black}%~%f%F{red}]%f%F{green}$%f "
 

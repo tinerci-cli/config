@@ -18,7 +18,7 @@ fzfcdroot () {
   export FZF_DEFAULT_COMMAND="fd -H . /"
   dir="$(fzf-tmux)"
   filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
-  
+
   # cd to dir
   if [ "$filetype" = "directory" ]; then
     cd "$dir" || return
@@ -46,13 +46,12 @@ fzfedhome () {
 scripter () {
   script="$PWD/$1"
   exists="$(/bin/ls -A | /bin/grep "$1")"
-  
+
   if [ "$exists" = "$1" ]
   then
     "$EDITOR" "$script"
   else
-    /bin/echo "#!/bin/sh" >> "$script"
-    /bin/touch "$script"
+    /bin/echo "#!/bin/sh" "\n" > "$script"
     /bin/chmod +x "$script"
     "$EDITOR" "$script"
   fi
@@ -94,3 +93,7 @@ unixtimebinary() {
   while true; do tobinary $(date +%s) | figlet; sleep 1; clear; done
 }
 
+#cinvert to webm
+2webm() {
+  ffmpeg -i $1 -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus $(echo $1 | tr -d '.').webm
+}
