@@ -3,7 +3,7 @@
 # get directory to cd to
 fzfcdhome () {
   export FZF_DEFAULT_COMMAND="fd -H . $HOME"
-  dir="$(fzf-tmux)"
+  dir="$(fzf-tmux --preview 'bat --color=always --style=numbers --line-range=:500 {}')"
   filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
 
   # cd to dir
@@ -16,7 +16,7 @@ fzfcdhome () {
 
 fzfcdroot () {
   export FZF_DEFAULT_COMMAND="fd -H . /"
-  dir="$(fzf-tmux)"
+  dir="$(fzf-tmux --preview 'bat --color=always --style=numbers --line-range=:500 {}')"
   filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
 
   # cd to dir
@@ -30,7 +30,7 @@ fzfcdroot () {
 # cd and edit file
 fzfedhome () {
   export FZF_DEFAULT_COMMAND="fd -H . $HOME"
-  dir="$(fzf-tmux)"
+  dir="$(fzf-tmux --preview 'bat --color=always --style=numbers --line-range=:500 {}')"
   filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
   editfile="$(echo "$dir" | awk -F  '/' '{print $NF}')"
 
@@ -60,7 +60,7 @@ scripter () {
 #copypath with fzf
 fzfcppath () {
   export FZF_DEFAULT_COMMAND="fd -H . /"
-  fzf-tmux | xclip -selection clipboard
+  fzf-tmux --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xclip -selection clipboard
 }
 
 #move files with ending $2 from $1 to $3
