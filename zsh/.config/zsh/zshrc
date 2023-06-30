@@ -28,6 +28,7 @@ set -o noclobber
 #source functions && functions
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/envvars" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/envvars"
 
 #"[USER@HOST:PWD]$
 PROMPT="%B%F{red}[%f%F{yellow}%n%f%F{white}@%f%F{cyan}%m%f%F{white}:%f%F{blue}%3~%f%F{red}]%f%F{green}$%f %b"
