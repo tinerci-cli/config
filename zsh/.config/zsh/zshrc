@@ -5,7 +5,7 @@
 #/___|___/_| |_|_|  \___|
 
 #start tmux
-if [ "$TMUX" = "" ]; then tmux; fi
+# if [ "$TMUX" = "" ]; then tmux; fi
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.config/zsh/.histfile
@@ -39,6 +39,8 @@ bindkey -s '^f' 'fzfcdhome\n'
 bindkey -s '^r' 'fzfcdroot\n'
 bindkey -s '^p' 'fzfcppath\n'
 bindkey -s '^u' 'fzfedhome\n'
+
+bindkey -s '^a' 'tmux\n'
 
 # Edit line in $EDITOR with ctrl-e:
 autoload edit-command-line
