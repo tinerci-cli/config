@@ -2,7 +2,7 @@
 
 #common commands
 alias \
-	c="clear" \
+	c="clear -x" \
 	rmr="rm -Ivr" \
 	ll="exa -labgiShH --time-style long-iso" \
 	la="exa -a" \
@@ -54,13 +54,12 @@ alias \
   :wq="exit" \
   :q="exit" \
   :x="exit" \
-  termconf="xfce4-terminal --preferences" \
+  termconf="nvim $XGD_CONFIG_HOME/alacritty/alacritty.yml" \
   wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"' \
   help="cat $XDG_CONFIG_HOME/shell/help.txt && echo '\nALIASES\n' &&  cat $XDG_CONFIG_HOME/shell/aliasrc" \
   gnome-settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center" \
   sl="sl -alFe" \
   reload="source $XDG_CONFIG_HOME/zsh/.zshrc"
-
 
 #apt
 alias \

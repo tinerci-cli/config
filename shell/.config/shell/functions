@@ -51,7 +51,7 @@ scripter () {
   then
     "$EDITOR" "$script"
   else
-    /bin/echo "#!/bin/sh" "\n" > "$script"
+    /bin/echo "#!/bin/sh" > "$script"
     /bin/chmod +x "$script"
     "$EDITOR" "$script"
   fi
