@@ -17,10 +17,10 @@ vim.cmd.filetype("on")
 -- vim.cmd("colorscheme foobar")
 -- tab
 vim.opt.smartcase = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
+-- vim.opt.tabstop = 2
+-- vim.opt.softtabstop = 2
+-- vim.opt.shiftwidth = 2
+-- vim.opt.expandtab = true
 vim.opt.smartindent = true
 -- backups
 vim.opt.hidden = false
