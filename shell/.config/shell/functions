@@ -42,6 +42,13 @@ fzfedhome () {
   fi
 }
 
+fzfman () {
+	selection="$(apropos . | fzf)"
+	kommando="$(echo "$selection" | awk '{print $1}')"
+	kapitel="$(echo "$selection" | sed "s/[^0-9.]*//g")"
+	man "$kapitel" "$kommando"
+}
+
 #create scripts and edit 'em
 scripter () {
   script="$PWD/$1"

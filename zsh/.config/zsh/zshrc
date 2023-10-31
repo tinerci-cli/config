@@ -4,9 +4,6 @@
 # / /\__ \ | | | | | (__
 #/___|___/_| |_|_|  \___|
 
-#start tmux
-# if [ "$TMUX" = "" ]; then tmux; fi
-
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.config/zsh/.histfile
 HISTSIZE=1000
@@ -39,6 +36,7 @@ bindkey -s '^f' 'fzfcdhome\n'
 bindkey -s '^r' 'fzfcdroot\n'
 bindkey -s '^p' 'fzfcppath\n'
 bindkey -s '^u' 'fzfedhome\n'
+bindkey -s '^o' 'fzfman\n'
 
 bindkey -s '^a' 'tmuxinator\n'
 

@@ -1,15 +1,15 @@
 #!/bin/sh
-#     _          _ _ 
+#     _          _ _
 # ___| |__   ___| | |
 #/ __| '_ \ / _ \ | |
 #\__ \ | | |  __/ | |
 #|___/_| |_|\___|_|_|
 #
-#__   ____ _ _ __(_) __ _| |__ | | ___  ___ 
+#__   ____ _ _ __(_) __ _| |__ | | ___  ___
 #\ \ / / _` | '__| |/ _` | '_ \| |/ _ \/ __|
 # \ V / (_| | |  | | (_| | |_) | |  __/\__ \
 #  \_/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
-                                           
+
 #export path
 export PATH=$HOME/.local/bin:$HOME/.local/appimage:$HOME/.local/pip:/usr/lib/cargo/bin:/usr/local/bin:/sbin:/usr/lib/jvm/jdk-20.0.1/bin:$PATH
 
@@ -35,17 +35,17 @@ export LESSHISTFILE=-
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export ANDROID_VENDOR_KEYS="$XDG_DATA_HOME"/android/adbkeys
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc 
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 #programs
 export FZF_DEFAULT_COMMAND="fd -H . $HOME"
 export GTK_OVERLAY_SCROLLING=0 #gtk disable scrollbar disappearing
-#export QT_QPA_PLATFORMTHEME=qt5ct
-#export XDG_DATA_DIRS=$HOME/.nix-profile/share:$HOME/.share:"${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"
+export BAT_THEME="gruvbox-dark"
+
 
 #default apps
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
-export PAGER="bat"
-export READER="evince"
+export PAGER="batcat --color always --style plain"
+export MANPAGER="sh -c 'sed -e s/.\\\\x08//g | bat -l man -p'"
 export BROWSER="firefox"
