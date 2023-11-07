@@ -72,7 +72,7 @@ fzfcppath () {
 
 #move files with ending $2 from $1 to $3
 mvsubs() {
-  find $1 -name "*.$2" -exec mv -it $3 {} +
+  find "$1" -name "*.$2" -exec mv -it "$3" {} +
 }
 
 #convert base 10 to binary
@@ -97,10 +97,15 @@ unixtime() {
 
 #get unix time in binary
 unixtimebinary() {
-  while true; do tobinary $(date +%s) | figlet; sleep 1; clear; done
+  while true; do tobinary "$(date +%s)" | figlet; sleep 1; clear; done
 }
 
-#cinvert to webm
-2webm() {
-  ffmpeg -i $1 -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus $(echo $1 | tr -d '.').webm
+#convert to webm
+towebm() {
+  ffmpeg -i "$1" -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus "$(echo "$1" | tr -d '.')".webm
+}
+
+# nvim startup
+nvimspeed() {
+	nvim --startuptime ~/.config/nvim/startup.log -c exit && tail -100 ~/.config/nvim/startup.log
 }
