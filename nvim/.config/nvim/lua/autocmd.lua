@@ -11,3 +11,15 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.buflisted = false
   end,
 })
+
+--quit commands
+
+vim.cmd[[
+
+command! Wq :wq
+command! W :w
+command! X :x
+command! Q :q
+:cmap Q! q!
+:cmap q1 q!
+]]
