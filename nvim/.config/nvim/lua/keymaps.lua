@@ -1,4 +1,4 @@
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 -- go up/down includes wrapped lines
 vim.keymap.set("n", "j", "gjzz")
