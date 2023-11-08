@@ -17,8 +17,8 @@ return require('packer').startup(function(use)
 
 	-- colorschemes
 	use 'ellisonleao/gruvbox.nvim'
-	use 'dracula/vim'
-	use 'artanikin/vim-synthwave84'
+	-- use 'dracula/vim'
+	-- use 'artanikin/vim-synthwave84'
 
 	-- shows tree of last changes
 	use 'mbbill/undotree'
@@ -57,12 +57,6 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	-- nvim window in browser for editing
-	-- use {
-		--   'glacambre/firenvim',
-		--   run = function() vim.fn['firenvim#install'](0) end
-		-- }
-
 		--statusline
 		use {
 			'nvim-lualine/lualine.nvim',
@@ -86,6 +80,8 @@ return require('packer').startup(function(use)
 
 		-- nvim tree
 		use 'nvim-tree/nvim-tree.lua'
+
+		use 'tpope/vim-fugitive'
 
 		-- LSP language specific
 		use {'mfussenegger/nvim-jdtls'} -- Java
@@ -114,9 +110,6 @@ return require('packer').startup(function(use)
 
 			}
 		}
-
-		-- use 'foo1/bar1.nvim'
-		-- use 'foo2/bar2.nvim'
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
