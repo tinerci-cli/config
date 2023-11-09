@@ -1,108 +1,88 @@
 #!/bin/sh
 
 # get directory to cd to
-fzfcdhome () {
-  export FZF_DEFAULT_COMMAND="fd -H . $HOME"
-  dir="$(fzf-tmux --preview 'bat --color=always --style=numbers --line-range=:500 {}')"
-  filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
-
-  # cd to dir
-  if [ "$filetype" = "directory" ]; then
-    cd "$dir" || return
-  else
-    cd "$(dirname "$dir")" || return
-  fi
+fzycdhome () {
+	file=$(fd -H . "$HOME" | fzy)
+	cd "$file" 2> /dev/null || cd "$(dirname "$file")" || echo "NO PERMISSION"
 }
 
-fzfcdroot () {
-  export FZF_DEFAULT_COMMAND="fd -H . /"
-  dir="$(fzf-tmux --preview 'bat --color=always --style=numbers --line-range=:500 {}')"
-  filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
-
-  # cd to dir
-  if [ "$filetype" = "directory" ]; then
-    cd "$dir" || return
-  else
-    cd "$(dirname "$dir")" || return
-  fi
+fzycdroot () {
+	file=$(fd -H . / | fzy)
+	cd "$file" 2> /dev/null || cd "$(dirname "$file")" || echo "NO PERMISSION"
 }
 
 # cd and edit file
-fzfedhome () {
-  export FZF_DEFAULT_COMMAND="fd -H . $HOME"
-  dir="$(fzf-tmux --preview 'bat --color=always --style=numbers --line-range=:500 {}')"
-  filetype="$(file "$dir" | awk '{print $2}')" #check if its a directory
-  editfile="$(echo "$dir" | awk -F  '/' '{print $NF}')"
-
-  # cd to dir
-  if [ "$filetype" = "directory" ]; then
-    cd "$dir" || return
-  else
-    cd "$(dirname "$dir")" && "$EDITOR" "$editfile" || return
-  fi
+fzyedhome () {
+	file=$(fd -H . "$HOME" | fzy)
+	cd "$(dirname "$file")" && "$EDITOR" "$file" || cd "$file" || return
 }
 
-fzfman () {
+fzyman () {
 	selection="$(apropos . | fzy)"
 	kommando="$(echo "$selection" | awk '{print $1}')"
 	kapitel="$(echo "$selection" | sed "s/[^0-9.]*//g")"
 	man "$kapitel" "$kommando"
 }
 
-#create scripts and edit 'em
-scripter () {
-  script="$PWD/$1"
-  exists="$(/bin/ls -A | /bin/grep "$1")"
-
-  if [ "$exists" = "$1" ]
-  then
-    "$EDITOR" "$script"
-  else
-    /bin/echo "#!/bin/sh" > "$script"
-    /bin/chmod +x "$script"
-    "$EDITOR" "$script"
-  fi
+fzyhist () {
+	# TODO: get command history to prompt without x11 server
+	com="$(tac "$HISTFILE" | fzy)"
+	xdotool type "$com"
 }
 
-#copypath with fzf
-fzfcppath () {
-  export FZF_DEFAULT_COMMAND="fd -H . /"
-  fzf-tmux --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xclip -selection clipboard
+#copypath with fzy
+fzycppath () {
+	fd -H . / | fzy | xclip -selection clipboard
+}
+
+#create scripts and edit 'em
+scripter () {
+	script="$PWD/$1"
+	exists="$(/bin/ls -A | /bin/grep "$1")"
+
+	if [ "$exists" = "$1" ]
+	then
+		"$EDITOR" "$script"
+	else
+		/bin/echo "#!/bin/sh" > "$script"
+		/bin/chmod +x "$script"
+		"$EDITOR" "$script"
+	fi
 }
 
 #move files with ending $2 from $1 to $3
 mvsubs() {
-  find "$1" -name "*.$2" -exec mv -it "$3" {} +
+	find "$1" -name "*.$2" -exec mv -it "$3" {} +
 }
 
 #convert base 10 to binary
 tobinary(){
-    n=$(($1))
-    bits=""
-    sign=""
-    if [ "$n" -lt 0 ]; then
-        sign=- n=$((-n))
-    fi
-    while [ "$n" -gt 0 ]; do
-        bits="$(( n&1 ))$bits";
-        : $(( n >>= 1 ))
-    done
-    printf "%s\n" "$sign${bits:-0}"
+	n=$(($1))
+	bits=""
+	sign=""
+	if [ "$n" -lt 0 ]; then
+		sign=- n=$((-n))
+	fi
+	while [ "$n" -gt 0 ]; do
+		bits="$(( n&1 ))$bits";
+		: $(( n >>= 1 ))
+	done
+	printf "%s\n" "$sign${bits:-0}"
 }
 
 #get unix time
 unixtime() {
-  while true; do date +%s | figlet; sleep 1; clear; done
+	while true; do date +%s | figlet; sleep 1; clear; done
 }
 
 #get unix time in binary
 unixtimebinary() {
-  while true; do tobinary "$(date +%s)" | figlet; sleep 1; clear; done
+	while true; do tobinary "$(date +%s)" | figlet; sleep 1; clear; done
 }
 
 #convert to webm
 towebm() {
-  ffmpeg -i "$1" -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus "$(echo "$1" | tr -d '.')".webm
+	ffmpeg -i "$1" -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus "$(echo "$1" | tr -d '.')".webm
 }
 
 # nvim startup

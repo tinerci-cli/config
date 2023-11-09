@@ -31,12 +31,12 @@ set -o noclobber
 PROMPT="%B%F{red}[%f%F{yellow}%n%f%F{white}@%f%F{cyan}%m%f%F{white}:%f%F{blue}%3~%f%F{red}]%f%F{green}$%f %b"
 #PROMPT="%F{red}[%f%F{magenta}%n%f%F{cyan}@%f%F{yellow}%m%f%F{cyan}:%f%F{black}%~%f%F{red}]%f%F{green}$%f "
 
-# cd using fzf
-bindkey -s '^f' 'fzfcdhome\n'
-bindkey -s '^r' 'fzfcdroot\n'
-bindkey -s '^p' 'fzfcppath\n'
-bindkey -s '^u' 'fzfedhome\n'
-bindkey -s '^o' 'fzfman\n'
+# cd using fzy
+bindkey -s '^f' 'fzycdhome\n'
+bindkey -s '^r' 'fzycdroot\n'
+bindkey -s '^p' 'fzycppath\n'
+bindkey -s '^u' 'fzyedhome\n'
+bindkey -s '^o' 'fzyman\n'
 
 bindkey -s '^a' 'tmuxinator\n'
 
@@ -46,8 +46,8 @@ zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 #load plugins
-source /usr/share/doc/fzf/examples/key-bindings.zsh #fzf history
-source /usr/share/doc/fzf/examples/completion.zsh #fzf completion using **
+# source /usr/share/doc/fzf/examples/key-bindings.zsh #fzf history
+# source /usr/share/doc/fzf/examples/completion.zsh #fzf completion using **
 source /usr/share/zsh/plugins/bd.zsh #change to a parentdirectory without specifying path
 source /usr/share/zsh/plugins/clipboard.zsh #needed for copyfile & copypath
 source /usr/share/zsh/plugins/copyfile.plugin.zsh #copies content of a file to clipboard (xorg)
