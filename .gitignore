@@ -2,5 +2,5 @@
 **/.zcompdump
 **/.netrwhist
 **/htoprc
-tmux/.config/tmux/plugins/
+tmux/.config/tmux/plugins/**
 nvim/.config/nvim/plugin/packer_compiled.lua
