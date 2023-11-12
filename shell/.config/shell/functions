@@ -1,50 +1,57 @@
 #!/bin/sh
 
 # get directory to cd to
-fzycdhome () {
-	file=$(fd -H . "$HOME" | fzy)
+fuzzycdhome () {
+	FZF_DEFAULT_COMMAND='fd -H . /'
+	file=$(fzf-tmux)
 	cd "$file" 2> /dev/null || cd "$(dirname "$file")" || echo "NO PERMISSION"
 }
 
-fzycdroot () {
-	file=$(fd -H . / | fzy)
+fuzzycdroot () {
+	FZF_DEFAULT_COMMAND='fd -H . /'
+	file=$(fzf-tmux)
 	cd "$file" 2> /dev/null || cd "$(dirname "$file")" || echo "NO PERMISSION"
 }
 
 # cd and edit file
-fzyedhome () {
-	file=$(fd -H . "$HOME" | fzy)
-	cd "$(dirname "$file")" && "$EDITOR" "$file" || cd "$file" || return
+fuzzyed () {
+	FZF_DEFAULT_COMMAND='fd -H . /'
+	file=$(fzf-tmux)
+	if [ ! -w "$file" ]; then
+		cd "$(dirname "$file")" && sudoedit "$file" || cd "$file" || return
+	else
+		cd "$(dirname "$file")" && "$EDITOR" "$file" || cd "$file" || return
+	fi
 }
 
-fzyman () {
-	selection="$(apropos . | fzy)"
+fuzzyman () {
+	FZF_DEFAULT_COMMAND='fd -H . /'
+	selection=$(fzf-tmux)
 	kommando="$(echo "$selection" | awk '{print $1}')"
 	kapitel="$(echo "$selection" | sed "s/[^0-9.]*//g")"
 	man "$kapitel" "$kommando"
 }
 
-fzyhist () {
+fuzzyhist () {
 	# TODO: get command history to prompt without x11 server
-	com="$(tac "$HISTFILE" | fzy)"
+	FZF_DEFAULT_COMMAND='fd -H . /'
+	com=$(fzf-tmux)
 	xdotool type "$com"
 }
 
-#copypath with fzy
-fzycppath () {
-	fd -H . / | fzy | xclip -selection clipboard
+#copypath with fuzzy
+fuzzycppath () {
+	FZF_DEFAULT_COMMAND='fd -H . /'
+	fzf-tmux | xclip -selection clipboard
 }
 
 #create scripts and edit 'em
 scripter () {
 	script="$PWD/$1"
-	exists="$(/bin/ls -A | /bin/grep "$1")"
-
-	if [ "$exists" = "$1" ]
-	then
+	if [ -e "$1" ]; then
 		"$EDITOR" "$script"
 	else
-		/bin/echo "#!/bin/sh" > "$script"
+		/bin/echo "#!/bin/bash" > "$script"
 		/bin/chmod +x "$script"
 		"$EDITOR" "$script"
 	fi

@@ -32,11 +32,11 @@ PROMPT="%B%F{red}[%f%F{yellow}%n%f%F{white}@%f%F{cyan}%m%f%F{white}:%f%F{blue}%3
 #PROMPT="%F{red}[%f%F{magenta}%n%f%F{cyan}@%f%F{yellow}%m%f%F{cyan}:%f%F{black}%~%f%F{red}]%f%F{green}$%f "
 
 # cd using fzy
-bindkey -s '^f' 'fzycdhome\n'
-bindkey -s '^r' 'fzycdroot\n'
-bindkey -s '^p' 'fzycppath\n'
-bindkey -s '^u' 'fzyedhome\n'
-bindkey -s '^o' 'fzyman\n'
+bindkey -s '^f' 'fuzzycdhome\n'
+bindkey -s '^r' 'fuzzycdroot\n'
+bindkey -s '^p' 'fuzzycppath\n'
+bindkey -s '^u' 'fuzzyed\n'
+bindkey -s '^o' 'fuzzyman\n'
 
 bindkey -s '^a' 'tmuxinator\n'
 
