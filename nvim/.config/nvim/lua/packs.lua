@@ -26,6 +26,9 @@ return require('packer').startup(function(use)
 	-- gc(c) to (un)comment
 	use 'numToStr/Comment.nvim'
 
+	-- save sessions :OBsess
+	use 'tpope/vim-obsession'
+
 	-- lmao
 	use 'eandrju/cellular-automaton.nvim'
 
