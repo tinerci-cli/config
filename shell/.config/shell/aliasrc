@@ -1,71 +1,59 @@
-#!/bin/sh
-
 #common commands
 alias \
-	c="clear -x" \
-	rmr="rm -Ivr" \
-	ll="exa -labgiShH --time-style long-iso" \
-	la="exa -a" \
-  ls="exa" \
-	mkd="mkdir -pv" \
-	cp="cp -ivr" \
-	ls="exa --group-directories-first" \
-	rm="rm -Iv" \
-	mv="mv -iv" \
-  ifconfig='ifconfig && echo "        public IP: $(curl -s ifconfig.me/ip)"' \
-  llsv="exa -a ~ | wc -l" \
-  nf="neofetch" \
-	v="nvim" \
-	m="mpv" \
-	b="bat" \
-  s="sudo" \
-  se="sudoedit" \
-  wgUP="sudo wg-quick up home" \
-  wgDOWN="sudo wg-quick down home" \
-  cf="copyfile" \
-  vrms="check-dfsg-status"
+	      c="clear -x" \
+	      rmr="rm -Ivr" \
+	      ll="exa -labgiShH --time-style long-iso" \
+	      la="exa -a" \
+	      ls="exa" \
+	      mkd="mkdir -pv" \
+	      cp="cp -ivr" \
+	      ls="exa --group-directories-first" \
+	      rm="rm -Iv" \
+	      mv="mv -iv" \
+	      ifconfig='ifconfig && echo "        public IP: $(curl -s ifconfig.me/ip)"' \
+	      llsv="exa -a ~ | wc -l" \
+	      nf="neofetch" \
+	      v="nvim" \
+	      m="mpv" \
+	      b="bat" \
+	      s="sudo" \
+	      se="sudoedit" \
+	      wgUP="sudo wg-quick up home" \
+	      wgDOWN="sudo wg-quick down home" \
+	      cf="copyfile" \
+	      vrms="check-dfsg-status" \
+	      g="git" \
+	      ga="git add" \
+	      gb="git branch" \
+	      gcm="git commit" \
+	      gcl="git clone" \
+	      gco="git checkout" \
+	      gd="git diff" \
+	      gf="git fetch" \
+	      gg="git gui citool" \
+	      gps="git push" \
+	      gpl="git pull" \
+	      gm="git merge" \
+	      gr="git remote" \
+	      grb="git rebase" \
+	      grs="git reset" \
+	      grv="git revert" \
+	      sctl="systemctl" \
+	      ssctl="sudo systemctl" \
+	      :wq="exit" \
+	      :q="exit" \
+	      :x="exit" \
+	      termconf="nvim $XGD_CONFIG_HOME/alacritty/alacritty.yml" \
+	      wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"' \
+	      svn="svn --config-dir \"$XDG_CONFIG_HOME\"/subversion" \
+	      help="cat $XDG_CONFIG_HOME/shell/help.txt && echo '\nALIASES\n' &&  cat $XDG_CONFIG_HOME/shell/aliasrc" \
+	      gnome-settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center" \
+	      sl="sl -alFe" \
+	      reload="source $XDG_CONFIG_HOME/zsh/.zshrc" \
+	      a="sudo apt" \
+	      aUU="sudo apt-get update && sudo apt-get upgrade" \
+	      aI="sudo apt-get install" \
+	      aS="apt-cache search" \
+	      aR="sudo apt-get remove" \
+	      aP="sudo apt-get purge"
 
-#git
-alias \
-	g="git" \
-	ga="git add" \
-	gb="git branch" \
-	gcm="git commit" \
-	gcl="git clone" \
-	gco="git checkout" \
-	gd="git diff" \
-	gf="git fetch" \
-	gg="git gui citool" \
-	gps="git push" \
-	gpl="git pull" \
-	gm="git merge" \
-	gr="git remote" \
-	grb="git rebase" \
-	grs="git reset" \
-	grv="git revert"
-
-#systemd
-alias \
-  sctl="systemctl" \
-  ssctl="sudo systemctl" \
-
-#stupid
-alias \
-  :wq="exit" \
-  :q="exit" \
-  :x="exit" \
-  termconf="nvim $XGD_CONFIG_HOME/alacritty/alacritty.yml" \
-  wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"' \
-  help="cat $XDG_CONFIG_HOME/shell/help.txt && echo '\nALIASES\n' &&  cat $XDG_CONFIG_HOME/shell/aliasrc" \
-  gnome-settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center" \
-  sl="sl -alFe" \
-  reload="source $XDG_CONFIG_HOME/zsh/.zshrc"
-
-#apt
-alias \
-  a="sudo apt" \
-  aUU="sudo apt-get update && sudo apt-get upgrade" \
-  aI="sudo apt-get install" \
-  aS="apt-cache search" \
-  aR="sudo apt-get remove" \
-  aP="sudo apt-get purge"
