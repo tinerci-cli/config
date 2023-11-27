@@ -32,10 +32,8 @@ fuzzyman () {
 }
 
 fuzzyhist () {
-	# TODO: get command history to prompt without x11 server
-	FZF_DEFAULT_COMMAND='fd -H . /'
-	com=$(fzf-tmux)
-	xdotool type "$com"
+	# TODO: without zsh sppecific shit
+	 print -z "$(fzf-tmux < $HISTFILE)"
 }
 
 #copypath with fuzzy
