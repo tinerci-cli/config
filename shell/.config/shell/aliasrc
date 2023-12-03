@@ -53,7 +53,7 @@ alias \
 	      a="sudo apt" \
 	      aUU="sudo apt-get update && sudo apt-get upgrade" \
 	      aI="sudo apt-get install" \
-	      aS="apt-cache search" \
+	      aS="apt-search" \
 	      aR="sudo apt-get remove" \
 	      aP="sudo apt-get purge"
 
