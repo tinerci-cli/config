@@ -46,7 +46,7 @@ alias \
 	      termconf="nvim $XGD_CONFIG_HOME/alacritty/alacritty.yml" \
 	      wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"' \
 	      svn="svn --config-dir \"$XDG_CONFIG_HOME\"/subversion" \
-	      help="cat $XDG_CONFIG_HOME/shell/help.txt && echo '\nALIASES\n' &&  cat $XDG_CONFIG_HOME/shell/aliasrc" \
+	      help="batcat $XDG_CONFIG_HOME/shell/help.txt && echo '\nALIASES\n' &&  batcat $XDG_CONFIG_HOME/shell/aliasrc" \
 	      gnome-settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center" \
 	      sl="sl -alFe" \
 	      reload="source $XDG_CONFIG_HOME/zsh/.zshrc" \
@@ -55,5 +55,6 @@ alias \
 	      aI="sudo apt-get install" \
 	      aS="apt-search" \
 	      aR="sudo apt-get remove" \
-	      aP="sudo apt-get purge"
-
+	      aP="sudo apt-get purge" \
+	      xC="xclip -selection CLIPBOARD" \
+	      lO="xfce4-session-logout --logout"
