@@ -48,7 +48,7 @@ scripter () {
 	if [ -e "$1" ]; then
 		"$EDITOR" "$script"
 	else
-		/bin/echo "#!/bin/bash" > "$script"
+		/bin/echo -e "#!/bin/bash\n\n" > "$script"
 		/bin/chmod +x "$script"
 		"$EDITOR" "$script"
 	fi
