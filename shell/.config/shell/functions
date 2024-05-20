@@ -93,3 +93,8 @@ towebm() {
 nvimspeed() {
 	nvim --startuptime ~/.config/nvim/startup.log -c exit && tail -100 ~/.config/nvim/startup.log
 }
+
+# create a fake/broken document with size $1 and name $2
+fake() {
+	dd if=/dev/urandom bs=$1 count=1 > $2
+}
