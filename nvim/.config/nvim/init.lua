@@ -1,4 +1,4 @@
-require("settings")
+require("vars")
 require("keymaps")
 require("autocmd")
-require("packs")
+require("lz")

@@ -5,12 +5,12 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- dont list quickfix buffers
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "qf",
-  callback = function()
-    vim.opt_local.buflisted = false
-  end,
-})
+--vim.api.nvim_create_autocmd("FileType", {
+--  pattern = "qf",
+--  callback = function()
+--    vim.opt_local.buflisted = false
+--  end,
+--})
 
 --quit commands
 
