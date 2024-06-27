@@ -98,3 +98,7 @@ nvimspeed() {
 fake() {
 	dd if=/dev/urandom bs=$1 count=1 > $2
 }
+
+open() {
+	xdg-open $1; sleep 1; clear;
+}
