@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/gruvbox.yml
+  - ~/.config/alacritty/theme.yml
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 # Import additional configuration files
