@@ -11,6 +11,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+	{ "shaunsingh/solarized.nvim" },
 	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 	{ "jiaoshijie/undotree", dependencies = "nvim-lua/plenary.nvim", config = true, keys = {}, },
 	{ "numToStr/Comment.nvim", opts = {}, lazy = false, },
