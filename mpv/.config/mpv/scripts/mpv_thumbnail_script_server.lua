@@ -15,9 +15,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 --[[
-    mpv_thumbnail_script.lua 0.4.9 - commit 0ab5d6f (branch pr23)
+    mpv_thumbnail_script.lua 0.4.2 - commit a2de250 (branch master)
     https://github.com/TheAMM/mpv_thumbnail_script
-    Built on 2022-07-11 17:55:55
+    Built on 2018-02-07 20:36:54
 ]]--
 local assdraw = require 'mp.assdraw'
 local msg = require 'mp.msg'
@@ -375,8 +375,6 @@ local thumbnailer_options = {
     -- Add a "--profile=<mpv_profile>" to the mpv sub-call arguments
     -- Use "" to disable
     mpv_profile = "",
-    -- Hardware decoding
-    mpv_hwdec = "no",
     -- Output debug logs to <thumbnail_path>.log, ala <cache_directory>/<video_filename>/000000.bgra.log
     -- The logs are removed after successful encodes, unless you set mpv_keep_logs below
     mpv_logs = true,
@@ -460,9 +458,6 @@ local thumbnailer_options = {
     -- Try to grab the raw stream and disable ytdl for the mpv subcalls
     -- Much faster than passing the url to ytdl again, but may cause problems with some sites
     remote_direct_stream = true,
-
-    -- Enable storyboards (requires yt-dlp in PATH). Currently only supports YouTube
-    storyboard_enable = true,
 }
 
 read_options(thumbnailer_options, SCRIPT_NAME)
@@ -506,8 +501,8 @@ function create_thumbnail_mpv(file_path, timestamp, size, output_path, options)
         -- Pass User-Agent and Referer - should do no harm even with ytdl active
         "--user-agent=" .. mp.get_property_native("user-agent"),
         "--referrer=" .. mp.get_property_native("referrer"),
-        -- User set hardware decoding
-        "--hwdec=" .. thumbnailer_options.mpv_hwdec,
+        -- Disable hardware decoding
+        "--hwdec=no",
 
         -- Insert --no-config, --profile=... and --log-file if enabled
         (thumbnailer_options.mpv_no_config and "--no-config" or nil),
@@ -523,21 +518,18 @@ function create_thumbnail_mpv(file_path, timestamp, size, output_path, options)
         -- Optionally disable subtitles
         (thumbnailer_options.mpv_no_sub and "--no-sub" or nil),
 
-        (options.no_scale == nil and ("--vf=scale=%d:%d"):format(size.w, size.h) or nil),
-
+        ("--vf=scale=%d:%d"):format(size.w, size.h),
         "--vf-add=format=bgra",
         "--of=rawvideo",
         "--ovc=rawvideo",
-        ("--o=%s"):format(output_path)
+        "--o", output_path
     })
     return utils.subprocess({args=mpv_command})
 end
 
 
-function create_thumbnail_ffmpeg(file_path, timestamp, size, output_path, options)
-    options = options or {}
-
-    local ffmpeg_command = skip_nil({
+function create_thumbnail_ffmpeg(file_path, timestamp, size, output_path)
+    local ffmpeg_command = {
         "ffmpeg",
         "-loglevel", "quiet",
         "-noaccurate_seek",
@@ -547,13 +539,13 @@ function create_thumbnail_ffmpeg(file_path, timestamp, size, output_path, option
         "-frames:v", "1",
         "-an",
 
-        (options.no_scale == nil and "-vf" or nil), (options.no_scale == nil and ("scale=%d:%d"):format(size.w, size.h) or nil),
+        "-vf", ("scale=%d:%d"):format(size.w, size.h),
         "-c:v", "rawvideo",
         "-pix_fmt", "bgra",
         "-f", "rawvideo",
 
         "-y", output_path
-    })
+    }
     return utils.subprocess({args=ffmpeg_command})
 end
 
@@ -592,28 +584,6 @@ function check_output(ret, output_path, is_mpv)
     return success
 end
 
--- split cols x N atlas in BGRA format into many thumbnail files
-function split_atlas(atlas_path, cols, thumbnail_size, template, offset)
-    local atlas = io.open(atlas_path, "rb")
-    local atlas_filesize = atlas:seek("end")
-    local atlas_pictures = math.floor(atlas_filesize / (4 * thumbnail_size.w * thumbnail_size.h))
-    for pic = 0, atlas_pictures-1 do
-        local idx = offset + pic
-        local x_start = (pic % cols) * thumbnail_size.w
-        local y_start = math.floor(pic / cols) * thumbnail_size.h
-        local thumb_file = io.open(template:format(idx), "wb")
-        local stride = 4 * thumbnail_size.w * math.min(cols, atlas_pictures)
-        for line = 0, thumbnail_size.h - 1 do
-            atlas:seek("set", 4 * x_start + (y_start + line) * stride)
-            local data = atlas:read(thumbnail_size.w * 4)
-            if data ~= nil then
-                thumb_file:write(data)
-            end
-        end
-        thumb_file:close()
-    end
-    atlas:close()
-end
 
 function do_worker_job(state_json_string, frames_json_string)
     msg.debug("Handling given job")
@@ -641,7 +611,7 @@ function do_worker_job(state_json_string, frames_json_string)
     local file_duration = mp.get_property_native("duration")
     local file_path = thumb_state.worker_input_path
 
-    if thumb_state.is_remote and thumb_state.storyboard_url == nil then
+    if thumb_state.is_remote then
         if (thumbnail_func == create_thumbnail_ffmpeg) then
             msg.warn("Thumbnailing remote path, falling back on mpv.")
         end
@@ -679,24 +649,8 @@ function do_worker_job(state_json_string, frames_json_string)
         end
 
         if need_thumbnail_generation then
-            local success
-            if thumb_state.storyboard_url ~= nil then
-                -- get atlas and then split it into thumbnails
-                local rows = 5
-                local cols = 5
-                local atlas_idx = math.floor(thumb_idx/(cols*rows))
-                local atlas_path = thumb_state.thumbnail_template:format(atlas_idx) .. ".atlas"
-                local url = thumb_state.storyboard_url[atlas_idx+1].url
-                local ret = thumbnail_func(url, 0, thumb_state.thumbnail_size, atlas_path, { no_scale=true })
-                success = check_output(ret, atlas_path, thumbnail_func == create_thumbnail_mpv)
-                if success then
-                    split_atlas(atlas_path, cols, thumb_state.thumbnail_size, thumb_state.thumbnail_template, atlas_idx * cols * rows)
-                    os.remove(atlas_path)
-                end
-            else
-                local ret = thumbnail_func(file_path, timestamp, thumb_state.thumbnail_size, thumbnail_path, thumb_state.worker_extra)
-                success = check_output(ret, thumbnail_path, thumbnail_func == create_thumbnail_mpv)
-            end
+            local ret = thumbnail_func(file_path, timestamp, thumb_state.thumbnail_size, thumbnail_path, thumb_state.worker_extra)
+            local success = check_output(ret, thumbnail_path, thumbnail_func == create_thumbnail_mpv)
 
             if success == nil then
                 -- Killed by us, changing files, ignore
