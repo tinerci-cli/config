@@ -115,15 +115,15 @@ if [ -z "$TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS" ]; then
 		#"cpu 240 136"
 		# "load 237 167"
 		#"tmux_mem_cpu_load 234 136"
-		# "battery 137 127"
+		"battery 235 136"
 		#"air ${TMUX_POWERLINE_SEG_AIR_COLOR} 255"
 		# "weather 37 255"
 		#"rainbarf 0 ${TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR}"
 		#"xkb_layout 125 117"
-		"mode_indicator 8 7"
+		"mode_indicator 8 37"
 		# "date_day 235 136"
 		# "date 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
-		# "time 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
+		"time 235 136"
 		#"utc_time 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
 	)
 fi
