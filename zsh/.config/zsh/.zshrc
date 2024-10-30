@@ -6,8 +6,8 @@
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.config/zsh/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=9223372036854775807
+SAVEHIST=9223372036854775807
 setopt autocd notify
 unsetopt beep
 zstyle :compinstall filename '"$HOME".config/zsh/.zshrc'
