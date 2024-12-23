@@ -11,8 +11,16 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+	-- colorschemes
+	{ "rebelot/kanagawa.nvim" },
+	{ "killitar/obscure.nvim"},
 	{ "shaunsingh/solarized.nvim" },
 	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
+	{ "projekt0n/github-nvim-theme", name = 'github-theme' },
+	{ "Mofiqul/adwaita.nvim" },
+	{ "cryptomilk/nightcity.nvim" },
+
+	-- useful stuff
 	{ "jiaoshijie/undotree", dependencies = "nvim-lua/plenary.nvim", config = true, keys = {}, },
 	{ "numToStr/Comment.nvim", opts = {}, lazy = false, },
 	{ "NvChad/nvim-colorizer.lua",},
@@ -21,6 +29,7 @@ require("lazy").setup({
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{ "nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},
 
+	-- lsp
 	{'williamboman/mason.nvim'},
 	{'williamboman/mason-lspconfig.nvim'},
 	{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
