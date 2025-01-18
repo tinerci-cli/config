@@ -11,19 +11,19 @@ vim.keymap.set("n", "<leader>j", "gt")
 vim.keymap.set("n", "<leader>k", "gT")
 
 -- switch split
-vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
-vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
-vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
-vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
+-- vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
+-- vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
+-- vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
+-- vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 --swicth buffers using > and <
-vim.keymap.set('n', '>', ':bnext<CR>')
-vim.keymap.set('n', '<', ':bprev<CR>')
+-- vim.keymap.set('n', '>', ':bnext<CR>')
+-- vim.keymap.set('n', '<', ':bprev<CR>')
 
 -- copy/paste from system clipboard
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>p", "\"+p")
-vim.keymap.set("n", "<leader>P", "o<ESC>\"+P")
+-- vim.keymap.set("n", "<leader>y", "\"+y")
+-- vim.keymap.set("n", "<leader>p", "\"+p")
+-- vim.keymap.set("n", "<leader>P", "o<ESC>\"+P")
 
 -- save file and exit
 vim.keymap.set("n", "<C-x>", ":x <CR>")
@@ -37,3 +37,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- disable highlighting till next searches
 vim.keymap.set("n", "L", ":nohlsearch<CR>")
+
+-- map("n", "<leader>fm", function()
+--   require("conform").format { lsp_fallback = true }
+-- end, { desc = "general format file" })

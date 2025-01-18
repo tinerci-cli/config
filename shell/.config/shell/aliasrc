@@ -49,7 +49,7 @@ alias \
 	      help="batcat $XDG_CONFIG_HOME/shell/help.txt && echo '\nALIASES\n' &&  batcat $XDG_CONFIG_HOME/shell/aliasrc" \
 	      gnome-settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center" \
 	      sl="sl -alFe" \
-	      reload="source $XDG_CONFIG_HOME/zsh/.zshrc" \
+	      reload="source /home/mt/.config/zsh/.zshrc" \
 	      a="sudo apt" \
 	      aUU="sudo apt-get update && sudo apt-get upgrade" \
 	      aI="sudo apt-get install" \
@@ -59,4 +59,4 @@ alias \
 	      xC="xclip -selection CLIPBOARD" \
 	      lO="xfce4-session-logout --logout" \
 	      unlall="find . -maxdepth 1 -type l -delete" \
-	      Ao="$XDG_CONFIG_HOME/alacritty/opacity.sh"
+	      Ao="$HOME/.config/alacritty/opacity.sh"

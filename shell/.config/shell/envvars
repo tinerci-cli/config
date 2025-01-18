@@ -22,6 +22,7 @@ export GTK_MODULES=canberra:$GTK_MODULES
 
 #clean ~
 #export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority #uncomment when no Display Manager
+ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
 export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
 export ZDOTDIR=$HOME/.config/zsh
 export PULSECOOKIE="$XDG_CONFIG_HOME"/pulse/cookie
@@ -35,6 +36,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export LESSHISTFILE=-
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export ANDROID_HOME="$XDG_DATA_HOME"/android
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
 export ANDROID_VENDOR_KEYS="$XDG_DATA_HOME"/android/adbkeys
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
@@ -42,11 +44,12 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export FZF_DEFAULT_COMMAND="fd -H . $HOME"
 export GTK_OVERLAY_SCROLLING=0 #gtk disable scrollbar disappearing
 export BAT_THEME="gruvbox-dark"
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 
 #default apps
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
-export PAGER="batcat --color always --style plain"
+export PAGER="bat --color always --style plain"
 export MANPAGER="sh -c 'sed -e s/.\\\\x08//g | bat -l man -p'"
 export BROWSER="firefox"
