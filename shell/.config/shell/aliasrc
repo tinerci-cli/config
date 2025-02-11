@@ -21,7 +21,6 @@ alias \
 	      wgUP="sudo wg-quick up home" \
 	      wgDOWN="sudo wg-quick down home" \
 	      cf="copyfile" \
-	      vrms="check-dfsg-status" \
 	      g="git" \
 	      ga="git add" \
 	      gb="git branch" \
@@ -60,3 +59,4 @@ alias \
 	      lO="xfce4-session-logout --logout" \
 	      unlall="find . -maxdepth 1 -type l -delete" \
 	      Ao="$HOME/.config/alacritty/opacity.sh"
+	      # vrms="check-dfsg-status" \
