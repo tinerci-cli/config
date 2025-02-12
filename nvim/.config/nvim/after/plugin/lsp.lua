@@ -13,43 +13,44 @@ require('mason-lspconfig').setup({
 	ensure_installed = {},
 	handlers = {
 		--  function(jdtls)
-			--   require('lspconfig')[jdtls].setup({})
-			-- end,
-			function(clangd)
-				require('lspconfig')[clangd].setup({})
-			end,
-			jdtls = lsp_zero.noop,
-		},
-	})
-	local cmp = require('cmp')
+		--   require('lspconfig')[jdtls].setup({})
+		-- end,
+		function(clangd)
+			require('lspconfig')[clangd].setup({})
+		end,
+		jdtls = lsp_zero.noop,
+	},
+})
+local cmp = require('cmp')
 
-	cmp.setup({
-		sources = {
-			{ name = 'nvim_lsp' },
-		},
-		mapping = {
-			['<Enter>'] = cmp.mapping.confirm({ select = false }),
-			['<Esc>'] = cmp.mapping.abort(),
-			['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
-			['<Tab>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
-			['<C-p>'] = cmp.mapping(function()
-				if cmp.visible() then
-					cmp.select_prev_item({ behavior = 'insert' })
-				else
-					cmp.complete()
-				end
-			end),
-			['<C-n>'] = cmp.mapping(function()
-				if cmp.visible() then
-					cmp.select_next_item({ behavior = 'insert' })
-				else
-					cmp.complete()
-				end
-			end),
-		},
-		snippet = {
-			expand = function(args)
-				require('luasnip').lsp_expand(args.body)
-			end,
-		},
-	})
+cmp.setup({
+	sources = {
+		{ name = 'nvim_lsp' },
+	},
+	mapping = {
+		['<Enter>'] = cmp.mapping.confirm({ select = false }),
+		['<Esc>'] = cmp.mapping.abort(),
+		['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
+		['<Tab>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
+		['<C-p>'] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_prev_item({ behavior = 'insert' })
+			else
+				cmp.complete()
+			end
+		end),
+		['<C-n>'] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_next_item({ behavior = 'insert' })
+			else
+				cmp.complete()
+			end
+		end),
+	},
+	snippet = {
+		expand = function(args)
+			require('luasnip').lsp_expand(args.body)
+		end,
+	},
+})
+vim.api.nvim_set_keymap('n', '<F3>', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
