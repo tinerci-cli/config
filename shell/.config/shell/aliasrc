@@ -58,5 +58,6 @@ alias \
 	      xC="xclip -selection CLIPBOARD" \
 	      lO="xfce4-session-logout --logout" \
 	      unlall="find . -maxdepth 1 -type l -delete" \
-	      Ao="$HOME/.config/alacritty/opacity.sh"
+	      Ao="$HOME/.config/alacritty/opacity.sh" \
+        alias adb='HOME="$XDG_DATA_HOME"/android adb'
 	      # vrms="check-dfsg-status" \
