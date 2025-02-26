@@ -59,5 +59,6 @@ alias \
 	      lO="xfce4-session-logout --logout" \
 	      unlall="find . -maxdepth 1 -type l -delete" \
 	      Ao="$HOME/.config/alacritty/opacity.sh" \
-	      hdf="heimdall flash --BOOT"
+	      hdf="heimdall flash --BOOT" \
+	      adb='HOME="$XDG_DATA_HOME"/android adb'
 	      # vrms="check-dfsg-status" \
